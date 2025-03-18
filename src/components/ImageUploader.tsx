@@ -60,8 +60,10 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
 
   return (
     <div
-      className={`relative border-2 border-dashed rounded-lg p-6 transition-colors ${
-        isDragging ? "border-blue-500 bg-blue-50" : "border-gray-300 hover:border-blue-400"
+      className={`relative border-2 border-dashed rounded-lg transition-all ${
+        isDragging 
+          ? "border-blue-500 bg-blue-50" 
+          : "border-blue-200 hover:border-blue-400 bg-gradient-to-b from-blue-50/50 to-indigo-50/50"
       }`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -75,19 +77,24 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
         accept="image/*"
         className="hidden"
       />
-      <div className="flex flex-col items-center justify-center space-y-4 py-4">
-        <div className="rounded-full bg-blue-100 p-3">
-          <Upload className="h-6 w-6 text-blue-500" />
+      <div className="flex flex-col items-center justify-center space-y-4 py-12 px-4">
+        <div className="rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 p-4 shadow-md">
+          <ImageIcon className="h-8 w-8 text-white" />
         </div>
         <div className="text-center">
-          <p className="text-base font-medium">
+          <p className="text-lg font-medium text-blue-800">
             Click to upload or drag and drop
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-blue-600/80 mt-1">
             PNG, JPG, GIF up to 5MB
           </p>
         </div>
-        <Button variant="outline" type="button" className="mt-2">
+        <Button 
+          variant="outline" 
+          type="button" 
+          className="mt-4 border-blue-200 text-blue-700 hover:bg-blue-50 hover:text-blue-800"
+        >
+          <Upload className="h-4 w-4 mr-2" />
           Select Image
         </Button>
       </div>
